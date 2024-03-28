@@ -1,0 +1,13 @@
+defaults: &defaults
+  uri: postgres://postgres@localhost/padrino_erp_development
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  uri: padrino_erp_test
+
+production:
+  <<: *defaults
+  uri: padrino_erp_production
