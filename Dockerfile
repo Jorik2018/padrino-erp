@@ -33,6 +33,8 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     postgresql-client \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN find / -name "postgres.h" -print
+
 WORKDIR /app
 
 COPY . .
