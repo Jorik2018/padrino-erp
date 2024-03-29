@@ -61,6 +61,7 @@ FROM ruby:3.1.0
 # Install the necessary libraries
 RUN apt-get update -qq && apt-get install -y postgresql-client
 https://dev.to/betosardinha/dj-1-creating-a-rails-api-with-postgres-and-docker-2fgn
+https://stackoverflow.com/questions/55744732/postgres-installation-on-docker-ruby-alpine
 
 Could not find PostgreSQL build environment (libraries & headers): Makefile not
 postgres.h... no
@@ -78,3 +79,6 @@ podman run -d --name bonita-postgres -p 5434:5432 -v /Users/ealarcop/Projects/bo
 podman run --name=bonita --env-file=env.txt -d -p 8090:8080 bonita
 
 podman inspect <IdContainer> | grep IPAddress
+
+
+https://railskey.wordpress.com/2013/08/02/padrino-installation-and-develop-demo-application/
