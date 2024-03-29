@@ -82,3 +82,4 @@ podman inspect <IdContainer> | grep IPAddress
 
 
 https://railskey.wordpress.com/2013/08/02/padrino-installation-and-develop-demo-application/
+https://mrcook.uk/padrino-blog-tutorial-using-postgres-datamapper
