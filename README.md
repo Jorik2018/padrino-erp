@@ -57,8 +57,14 @@ podman build -t padrino-erp .
 podman run -p 3000:3000 padrino-erp
 
 
-
+FROM ruby:3.1.0
+# Install the necessary libraries
+RUN apt-get update -qq && apt-get install -y postgresql-client
 https://dev.to/betosardinha/dj-1-creating-a-rails-api-with-postgres-and-docker-2fgn
+
+Could not find PostgreSQL build environment (libraries & headers): Makefile not
+postgres.h... no
+
 
 podman run -d --name db-postgres \
 	-e POSTGRES_PASSWORD=123456 \
