@@ -1,17 +1,21 @@
-FROM easyredir/ruby:3.1
+FROM ruby:3.1-alpine
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV PG_MAJOR 16
+ARG PRECOMPILEASSETS
 
-RUN curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor > /usr/share/keyrings/postgresql.gpg
-RUN sh -c 'echo "deb [signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
+ENV NODE_OPTIONS "--max_old_space_size=4096"
+ENV SECRET_KEY_BASE=foo
 
-RUN apt-get update \
-	&& apt-get install -y postgresql-client-$PG_MAJOR \
-	&& rm -rf /root/* \
-	&& rm -rf /tmp/* \
-	&& rm -rf /var/cache/apt/archives/*.deb \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apk add --update --no-cache \
+    build-base \
+    git \
+    postgresql-dev \
+    postgresql-client \
+    imagemagick \
+    nodejs-current \
+    yarn \
+    python2 \
+    tzdata \
+    file
 
 WORKDIR /app
 
