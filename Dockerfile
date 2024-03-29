@@ -1,19 +1,25 @@
-# Use a base image with Ruby 3.1 installed
-FROM ruby:3.1
+FROM ruby:3.1-slim
 
 RUN apt update
 
-RUN apt install postgresql-client
+#RUN apt install postgresql-client
+RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
+    build-essential \
+    gnupg2 \
+    curl \
+    less \
+    libvips \
+    libpq-dev \
+    postgresql-client 
 
-# Set the working directory in the container
 WORKDIR /app
 
 COPY . .
 
 COPY config/database.yml.example config/database.yml
 
-# Install your application dependencies
 RUN bundle install
 
-# Specify the command to run your application
+EXPOSE 3000
+
 CMD ["padrino", "s"]
