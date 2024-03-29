@@ -1,4 +1,4 @@
-FROM ruby:3.1
+FROM easyredir/ruby:3.1
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PG_MAJOR 16
